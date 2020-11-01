@@ -1,4 +1,7 @@
+import 'package:bloc_todo_login/bloc/bloc_class.dart';
+import 'package:bloc_todo_login/bloc/bloc_states.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,8 +11,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return MaterialApp(
-      home: App(),
+    return BlocProvider<TaskBloc>(
+      create: (context) {
+        return TaskBloc(EmptyTasksState());
+      },
+      child: MaterialApp(
+        home: App(),
+      ),
     );
   }
 }
